@@ -461,11 +461,23 @@ const thankyou = document.getElementById("thankyouSection");
 
 document.getElementById("nextBtn").onclick = function(){
 
-    step1.style.display = "none";
+    const form =
+    document.getElementById("step1Form");
 
-    step2.style.display = "block";
+    if(form.checkValidity()){
 
-    window.scrollTo(0,0);
+        step1.style.display = "none";
+
+        step2.style.display = "block";
+
+        window.scrollTo(0,0);
+
+    }
+    else{
+
+        form.reportValidity();
+
+    }
 
 };
 
