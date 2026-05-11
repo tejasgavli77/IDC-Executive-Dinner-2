@@ -15,35 +15,44 @@ body{
 
 .hero{
     background:#1f3faa;
-    padding:25px 20px 35px;
+    padding:22px 20px 28px;
     color:white;
 }
 
 .hero-inner{
-    max-width:800px;
+   max-width:1100px;
     margin:auto;
 }
 
-.logo{
-    width:90px;
-    margin-bottom:30px;
+.top-row{
+    display:flex;
+    align-items:center;
+    gap:25px;
+    margin-bottom:18px;
 }
-
+      
+.logo{
+    width:65px;
+    flex-shrink:0;
+}
+      
 .event-type{
     font-size:13px;
     font-weight:bold;
     letter-spacing:1px;
+    margin-bottom:8px;
 }
 
 .hero h1{
-    font-size:42px;
-    line-height:1.15;
-    margin:12px 0 18px;
+    font-size:30px;
+    line-height:1.25;
+    margin:0;
+    font-weight:600;
 }
 
 .event-date{
-    font-size:22px;
-    margin-bottom:30px;
+    font-size:18px;
+    margin-bottom:18px;
 }
 
 .register-btn{
@@ -145,7 +154,7 @@ body{
 .footer{
     background:#2450d3;
     color:white;
-    padding:45px 20px;
+    padding:28px 20px;
 }
 
 .footer-inner{
@@ -155,8 +164,8 @@ body{
 }
 
 .footer-inner p{
-    line-height:1.8;
-    margin-bottom:28px;
+    line-height:1.7;
+    margin-bottom:16px;
     font-size:15px;
     color:white;
 }
@@ -194,13 +203,19 @@ body{
 
     <div class="hero-inner">
 
-        <img src="logo.png" class="logo">
+        <div class="top-row">
 
-        <p class="event-type">EXECUTIVE DINNER</p>
+            <img src="logo.png" class="logo">
 
-        <h1>
-            Scaling Agentic AI: From Experimentation to Enterprise Value Through Modernization and Trust
-        </h1>
+            <h1>
+                Scaling Agentic AI: From Experimentation to Enterprise Value Through Modernization and Trust
+            </h1>
+
+        </div>
+
+        <p class="event-type">
+            EXECUTIVE DINNER
+        </p>
 
         <p class="event-date">
             Tuesday, May 19, 2026
@@ -428,7 +443,7 @@ body{
             Held in more than 30 countries, they foster networking, collaboration, engagement, and knowledge sharing among industry leaders and professionals. Each event is meticulously curated to provide valuable insights and meaningful connections through analysts and editor-led content, global perspectives, case studies presented by the world’s leading tech companies and a range of interactive formats including expert panels, live demos, roundtables, 1:1 meetings and workshops.
         </p>
 
-        <img src="logo.png" class="footer-logo">
+        
 
         <p class="copyright">
             Copyright 2026 IDG. All Rights Reserved.
