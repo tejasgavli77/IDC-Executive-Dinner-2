@@ -369,17 +369,43 @@ body{
 
 </section>
 
+    <section class="form-section" id="thankyouSection" style="display:none;">
+
+    <div class="form-container" style="text-align:center;">
+
+        <h2>We received your registration. Thank you.</h2>
+
+        <p style="font-size:22px; margin-top:40px;">
+            Your Confirmation Number is:
+        </p>
+
+        <h1 id="confirmID" style="color:#2a1485; font-size:48px;">
+            IDC00001
+        </h1>
+
+        <p style="margin-top:30px; color:#444;">
+            Your registration has been received and is currently pending.
+        </p>
+
+    </div>
+
+</section>
+
 <footer class="footer">
 
 </footer>
 
 <script>
 
+const step1 = document.querySelector(".form-section");
+const step2 = document.getElementById("step2Section");
+const thankyou = document.getElementById("thankyouSection");
+
 document.getElementById("nextBtn").onclick = function(){
 
-    document.querySelector(".form-section").style.display = "none";
+    step1.style.display = "none";
 
-    document.getElementById("step2Section").style.display = "block";
+    step2.style.display = "block";
 
     window.scrollTo(0,0);
 
@@ -387,13 +413,75 @@ document.getElementById("nextBtn").onclick = function(){
 
 document.getElementById("prevBtn").onclick = function(){
 
-    document.querySelector(".form-section").style.display = "block";
+    step1.style.display = "block";
 
-    document.getElementById("step2Section").style.display = "none";
+    step2.style.display = "none";
 
     window.scrollTo(0,0);
 
 };
+
+document.getElementById("finalForm").addEventListener("submit", async function(e){
+
+    e.preventDefault();
+
+    const confirmationCode =
+    "IDC" + Math.floor(Math.random()*1000000);
+
+    document.getElementById("confirmID").innerText =
+    confirmationCode;
+
+    const formData = new FormData();
+
+    const step1Inputs =
+    document.querySelectorAll("#step1Form input");
+
+    const step2Inputs =
+    document.querySelectorAll("#finalForm input");
+
+    step1Inputs.forEach(input => {
+
+        formData.append(input.name, input.value);
+
+    });
+
+    step2Inputs.forEach(input => {
+
+        if(
+            (input.type === "radio" && input.checked)
+            ||
+            input.type !== "radio"
+        ){
+
+            formData.append(input.name, input.value);
+
+        }
+
+    });
+
+    formData.append(
+        "confirmation_code",
+        confirmationCode
+    );
+
+    await fetch(
+        "https://formspree.io/f/mzdoyvzr",
+        {
+            method:"POST",
+            body:formData,
+            headers:{
+                'Accept':'application/json'
+            }
+        }
+    );
+
+    step2.style.display = "none";
+
+    thankyou.style.display = "block";
+
+    window.scrollTo(0,0);
+
+});
 
 </script>
     
